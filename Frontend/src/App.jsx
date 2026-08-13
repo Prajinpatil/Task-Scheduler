@@ -1,122 +1,131 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import React, { useState } from "react";
+import "./App.css"; 
+
+const initialTasks = [
+  {
+    id: "task-1",
+    title: "Drink water",
+    isCompleted: false,
+    notificationTime: "09:30", 
+    daysToRepeat: ["monday", "wednesday"], 
+    alarmSound: "bell", 
+    isSnoozeEnabled: true 
+  },
+  {
+    id: "task-2",
+    title: "Review algorithms",
+    isCompleted: false,
+    notificationTime: "18:00", 
+    daysToRepeat: ["today"], 
+    alarmSound: "chime", 
+    isSnoozeEnabled: false 
+  }
+];
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState(initialTasks);
+  const [newTaskTitle, setNewTaskTitle] = useState("");
+  const [newTaskTime, setNewTaskTime] = useState("12:00");
+
+  // 1. Add Task Function
+  const handleAddTask = () => {
+    if (newTaskTitle.trim() === "") return;
+
+    const newTask = {
+      id: `task-${Date.now()}`, // Fixed the ID bug!
+      title: newTaskTitle,
+      isCompleted: false,
+      notificationTime: newTaskTime,
+      daysToRepeat: ["today"],
+      alarmSound: "default",
+      isSnoozeEnabled: false
+    };
+
+    setTasks([...tasks, newTask]);
+    setNewTaskTitle("");
+    setNewTaskTime("12:00");
+  };
+
+  // 2. Toggle Complete Function 
+  const handleToggleComplete = (taskId) => {
+    setTasks(
+      tasks.map((task) => {
+        if(task.id === taskId){
+          return {...task, isCompleted: !task.isCompleted};
+        } else {
+          return task;
+        }
+      })
+    );
+  };
+
+  // 3. Delete Task Function 
+  const handleDeleteTask = (taskId) => {
+    setTasks(
+      tasks.filter((task) => {
+        if(task.id === taskId){
+          return false; 
+        } else {
+          return true;
+        }
+      })
+    );
+  };
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
+    <div className="app-container">
+      
+      {/* Sidebar area for the Dashboard Widgets */}
+      <aside className="sidebar">
+        <h2>Dashboard</h2>
+        
+        <div className="widget">
+          <p><strong>Quote:</strong><br/>"One day or day one. You decide."</p>
         </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
+        
+        <div className="widget">
+          <p><strong>Countdown:</strong><br/>14 Days remaining</p>
         </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+        
+        <div className="widget">
+          <p><strong>Yesterday's Missed:</strong><br/>2 Tasks</p>
+        </div>
+      </aside>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+      {/* Main Task Area */}
+      <main className="main-content">
+        <h1>My Tasks</h1>
+        
+        <div className="add-task-form">
+          <input 
+            type="time" 
+            value={newTaskTime} 
+            onChange={(event) => setNewTaskTime(event.target.value)} 
+          />
+          <input 
+            type="text" 
+            placeholder="What do you need to do?"
+            value={newTaskTitle} 
+            onChange={(event) => setNewTaskTitle(event.target.value)} 
+          />
+          <button onClick={handleAddTask}>Add Task</button>
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        {/* Rendering the Task List */}
+        <div className="task-list">
+          {tasks.map((task) => (
+            <div key={task.id} className="task-item">
+              <button className="delete-btn" onClick={() => handleDeleteTask(task.id)}>Delete</button>
+              <input type="checkbox" checked={task.isCompleted} onChange={() => handleToggleComplete(task.id)} />
+              <span className="task-title">{task.title}</span>
+              <span className="task-time">({task.notificationTime})</span>
+            </div>
+          ))}
+        </div>
+      </main>
+
+    </div>
+  );
 }
 
-export default App
+export default App;
