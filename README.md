@@ -36,9 +36,9 @@ Designed with an **antigravity dark mode aesthetic**, glowing neon cyan and matr
 
 ##  Key Features & Capabilities
 
-### 1. 🔔 Continuous Ringing Alarm with Dismiss & Snooze
+### 1.  Continuous Ringing Alarm with Dismiss & Snooze
 * **Non-Blocking Looping Alarm**: When a task's notification time arrives, the assigned audio ringtone loops continuously (`loop = true`).
-* **Active Alarm Cyber Modal**: Displays a high-impact `🚨 ALARM TRIGGERED` overlay with task title and time.
+* **Active Alarm Cyber Modal**: Displays a high-impact ` ALARM TRIGGERED` overlay with task title and time.
 * **Dismiss Button**: Instantly stops the audio loop and closes the modal.
 * **Snooze Options (`+1 HR`, `+2 HR`, `+3 HR`)**:
   * Automatically recalculates `notificationTime` to `now + X hours`.
@@ -52,17 +52,17 @@ Designed with an **antigravity dark mode aesthetic**, glowing neon cyan and matr
   3. **Radar Ping** (`radar_ping.wav`)
   4. **Classic Bell** (`classic_bell.wav`)
 * Select custom ringtones per task in the creation form.
-* Displays a `🎵 Ringtone Name` badge on every task item.
+* Displays a ` Ringtone Name` badge on every task item.
 
 ### 3. 3:00 AM Automatic Daily Task Reset Engine
 * **Daily Reset Cycle**: Automatically unchecks all completed tasks (`isCompleted: false`) at **03:00 AM** every night (or when launching the app on a new day).
 * Resets alarm memory so daily tasks ring fresh every morning.
 
 ### 4.  Freeze / Activate Tasks
-* **Freeze Toggle**: Temporarily pause any task by clicking `❄️ Freeze`.
-* **Frozen State**: Displays a `❄️ FROZEN` status badge and dimmed card styling.
-* **Alarm Suspension**: Frozen tasks are skipped by the alarm engine until un-frozen (`⚡ Activate`).
-* Includes a dedicated **`Frozen ❄️`** tab filter.
+* **Freeze Toggle**: Temporarily pause any task by clicking ` Freeze`.
+* **Frozen State**: Displays a ` FROZEN` status badge and dimmed card styling.
+* **Alarm Suspension**: Frozen tasks are skipped by the alarm engine until un-frozen (` Activate`).
+* Includes a dedicated **`Frozen `** tab filter.
 
 ### 5.  Flexible Day Recurrence Scheduling
 * Schedule tasks for:
