@@ -9,7 +9,7 @@ Follow this simple step-by-step guide to install and run **TaskForge** on any 64
 ### 1. The Installer File
 Locate the compiled setup executable on your current computer:
 * **File Name**: `TaskForge Setup 1.0.0.exe`
-* **Path**: `Backend\dist-electron\TaskForge Setup 1.0.0.exe`
+* **Path**:  https://drive.google.com/file/d/1SM6HN7n4phu6PyG5NSkRNmQa8CGHyywM/view?usp=drivesdk
 
 ### 2. Database Connectivity Check (MongoDB)
 * **If using MongoDB Atlas (Cloud Database)**:
