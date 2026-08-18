@@ -1,4 +1,4 @@
-# 🚀 Antigravity Hacker Task Scheduler & Desktop Command Center
+#  Antigravity Hacker Task Scheduler & Desktop Command Center
 
 A high-performance, motivational, "hacker-style" desktop task scheduling and command center application built with **React 19**, **Node.js**, **Express 5**, **MongoDB**, and **Electron**.
 
@@ -6,7 +6,7 @@ Designed with an **antigravity dark mode aesthetic**, glowing neon cyan and matr
 
 ---
 
-## 🛠️ Complete Tech Stack
+##  Complete Tech Stack
 
 ### **Frontend (User Interface & Audio Engine)**
 * **React 19**: Modern component architecture using React Hooks (`useState`, `useEffect`, `useRef`).
@@ -34,55 +34,55 @@ Designed with an **antigravity dark mode aesthetic**, glowing neon cyan and matr
 
 ---
 
-## 🔥 Key Features & Capabilities
+##  Key Features & Capabilities
 
-### 1. 🔔 Continuous Ringing Alarm with Dismiss & Snooze
+### 1.  Continuous Ringing Alarm with Dismiss & Snooze
 * **Non-Blocking Looping Alarm**: When a task's notification time arrives, the assigned audio ringtone loops continuously (`loop = true`).
-* **Active Alarm Cyber Modal**: Displays a high-impact `🚨 ALARM TRIGGERED` overlay with task title and time.
+* **Active Alarm Cyber Modal**: Displays a high-impact ` ALARM TRIGGERED` overlay with task title and time.
 * **Dismiss Button**: Instantly stops the audio loop and closes the modal.
 * **Snooze Options (`+1 HR`, `+2 HR`, `+3 HR`)**:
   * Automatically recalculates `notificationTime` to `now + X hours`.
   * Persists updated time in MongoDB.
   * Resets alarm deduplication memory so the alarm rings again after the snooze duration if incomplete.
 
-### 2. 🎵 Ringtone Selection
+### 2.  Ringtone Selection
 * **4 Custom Ringtone Options** stored in `Frontend/public/`:
   1. **Cyber Pulse** (`cyber_pulse.wav`)
   2. **Futuristic Chime** (`futuristic_chime.wav`)
   3. **Radar Ping** (`radar_ping.wav`)
   4. **Classic Bell** (`classic_bell.wav`)
 * Select custom ringtones per task in the creation form.
-* Displays a `🎵 Ringtone Name` badge on every task item.
+* Displays a ` Ringtone Name` badge on every task item.
 
-### 3. 🌙 3:00 AM Automatic Daily Task Reset Engine
+### 3. 3:00 AM Automatic Daily Task Reset Engine
 * **Daily Reset Cycle**: Automatically unchecks all completed tasks (`isCompleted: false`) at **03:00 AM** every night (or when launching the app on a new day).
 * Resets alarm memory so daily tasks ring fresh every morning.
 
-### 4. ❄️ Freeze / Activate Tasks
-* **Freeze Toggle**: Temporarily pause any task by clicking `❄️ Freeze`.
-* **Frozen State**: Displays a `❄️ FROZEN` status badge and dimmed card styling.
-* **Alarm Suspension**: Frozen tasks are skipped by the alarm engine until un-frozen (`⚡ Activate`).
-* Includes a dedicated **`Frozen ❄️`** tab filter.
+### 4.  Freeze / Activate Tasks
+* **Freeze Toggle**: Temporarily pause any task by clicking ` Freeze`.
+* **Frozen State**: Displays a ` FROZEN` status badge and dimmed card styling.
+* **Alarm Suspension**: Frozen tasks are skipped by the alarm engine until un-frozen (` Activate`).
+* Includes a dedicated **`Frozen `** tab filter.
 
-### 5. 🗓️ Flexible Day Recurrence Scheduling
+### 5.  Flexible Day Recurrence Scheduling
 * Schedule tasks for:
   * **Everyday**: Rings every single day.
   * **Today Only**: Rings today only.
   * **Specific Days**: Select custom days of the week (e.g., *Mon & Fri*, *Tue & Thu*).
 * Checks the current day of the week before triggering alarms.
 
-### 6. 📅 Editable Countdown Event Widget
+### 6.  Editable Countdown Event Widget
 * Sidebar widget tracking days remaining until a deadline.
 * **`✎ Edit` Modal**: Interactive calendar date picker (`<input type="date" />`) and custom event title input.
 * Computes exact days remaining (`targetDate - currentDate`) and updates daily.
 
-### 7. ⚡ Daily Rotating Hero Motivational Quote Banner
+### 7.  Daily Rotating Hero Motivational Quote Banner
 * Front and center header banner with large, bold, glowing Orbitron typography.
 * Automatically rotates through motivational hacker quotes every calendar day.
 
 ---
 
-## 📡 REST API Reference
+##  REST API Reference
 
 | Method | Endpoint | Description |
 | :--- | :--- | :--- |
@@ -96,7 +96,7 @@ Designed with an **antigravity dark mode aesthetic**, glowing neon cyan and matr
 
 ---
 
-## 📁 Directory Architecture
+## Directory Architecture
 
 ```
 Task_Scheduler/
@@ -124,7 +124,7 @@ Task_Scheduler/
 
 ---
 
-## ⚙️ Building & Running Locally
+##  Building & Running Locally
 
 ### Development Mode
 1. **Backend**:
