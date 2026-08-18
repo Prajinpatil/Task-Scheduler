@@ -1,0 +1,519 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800;900&family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ==========================================
+   ANTIGRAVITY HACKER COMMAND CENTER THEME
+   ========================================== */
+
+:root {
+  /* Color Palette */
+  --bg-deep: #030509;
+  --bg-slate: #0a0e17;
+  --bg-card: rgba(13, 20, 33, 0.75);
+  --bg-card-hover: rgba(18, 28, 46, 0.85);
+  --bg-input: #060911;
+
+  /* High-Contrast Neon Accents */
+  --neon-cyan: #00f3ff;
+  --neon-cyan-glow: rgba(0, 243, 255, 0.4);
+  --neon-green: #00ff88;
+  --neon-green-glow: rgba(0, 255, 136, 0.4);
+  --neon-pink: #ff0055;
+  --neon-pink-glow: rgba(255, 0, 85, 0.4);
+
+  /* Text Colors */
+  --text-main: #f0f6fc;
+  --text-muted: #8b949e;
+  --text-dim: #485368;
+
+  /* Glass & Borders */
+  --border-cyber: rgba(0, 243, 255, 0.2);
+  --border-cyber-bright: rgba(0, 243, 255, 0.6);
+
+  /* Typography */
+  --font-mono: 'Fira Code', ui-monospace, monospace;
+  --font-header: 'Orbitron', 'Syne', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+
+  /* Antigravity Floating Shadows */
+  --shadow-floating: 
+    0 10px 30px -5px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(0, 243, 255, 0.12),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+
+  --shadow-floating-hover: 
+    0 18px 40px -5px rgba(0, 0, 0, 0.9),
+    0 0 30px rgba(0, 243, 255, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.15);
+}
+
+/* Base resets & dark mode background override */
+body {
+  background-color: var(--bg-deep) !important;
+  background-image: 
+    radial-gradient(circle at 50% 0%, rgba(0, 243, 255, 0.08) 0%, transparent 65%),
+    radial-gradient(circle at 80% 100%, rgba(0, 255, 136, 0.05) 0%, transparent 50%),
+    linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px) !important;
+  background-size: 100% 100%, 100% 100%, 35px 35px, 35px 35px !important;
+  color: var(--text-main) !important;
+  font-family: var(--font-body);
+  margin: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 100% !important;
+  max-width: 1280px !important;
+  margin: 0 auto !important;
+  border: none !important;
+  background: transparent !important;
+  text-align: left !important;
+}
+
+/* App Container Layout */
+.app-container {
+  display: flex;
+  gap: 36px;
+  padding: 48px 32px;
+  min-height: 100vh;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+/* ------------------------------------------
+   SIDEBAR & DASHBOARD WIDGETS
+   ------------------------------------------ */
+.sidebar {
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 32px;
+}
+
+.sidebar h2 {
+  font-family: var(--font-header);
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--neon-green);
+  text-shadow: 0 0 12px var(--neon-green-glow);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar h2::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+  border-radius: 50%;
+}
+
+/* Antigravity Widget Cards */
+.widget {
+  background: var(--bg-card);
+  border: 1px solid var(--border-cyber);
+  border-radius: 16px;
+  padding: 22px 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-floating);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle glowing line accent on top of widgets */
+.widget::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+  opacity: 0.6;
+}
+
+.widget:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-floating-hover);
+  border-color: var(--border-cyber-bright);
+}
+
+.widget p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: var(--text-main);
+  line-height: 1.6;
+  font-family: var(--font-mono);
+}
+
+.widget strong {
+  display: block;
+  font-family: var(--font-header);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px var(--neon-cyan-glow);
+  margin-bottom: 6px;
+}
+
+/* Highlight Quote Widget specifically */
+.widget:first-of-type {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.08) 0%, rgba(13, 20, 33, 0.85) 100%);
+  border-color: rgba(0, 243, 255, 0.4);
+}
+
+.widget:first-of-type p {
+  font-family: var(--font-header);
+  font-style: italic;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.5;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Progress & Numbers in Widgets */
+.widget p:not(:first-child) {
+  font-weight: 600;
+}
+
+/* ------------------------------------------
+   MAIN TASK COMMAND AREA
+   ------------------------------------------ */
+.main-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.main-content h1 {
+  font-family: var(--font-header);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.main-content h1::after {
+  content: "SYS.ONLINE";
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--neon-green);
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-shadow: 0 0 8px var(--neon-green-glow);
+}
+
+/* ------------------------------------------
+   ADD TASK FORM
+   ------------------------------------------ */
+.add-task-form {
+  display: flex;
+  gap: 14px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-cyber);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-floating);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.add-task-form:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-floating-hover);
+  border-color: var(--border-cyber-bright);
+}
+
+.add-task-form input[type="time"] {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  background: var(--bg-input);
+  border: 1px solid var(--border-cyber);
+  border-radius: 10px;
+  padding: 14px 16px;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.add-task-form input[type="text"] {
+  flex: 1;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--text-main);
+  background: var(--bg-input);
+  border: 1px solid var(--border-cyber);
+  border-radius: 10px;
+  padding: 14px 20px;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.add-task-form input[type="text"]::placeholder {
+  color: var(--text-dim);
+}
+
+.add-task-form input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px var(--neon-cyan-glow), inset 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* Cyber Button Styling */
+.add-task-form button {
+  font-family: var(--font-header);
+  font-size: 0.9rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #030712;
+  background: linear-gradient(135deg, var(--neon-cyan) 0%, #00b8ff 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 14px 28px;
+  cursor: pointer;
+  box-shadow: 0 0 18px var(--neon-cyan-glow);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              filter 0.3s ease;
+  white-space: nowrap;
+}
+
+.add-task-form button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(0, 243, 255, 0.7);
+  filter: brightness(1.1);
+}
+
+.add-task-form button:active {
+  transform: translateY(-1px);
+}
+
+/* ------------------------------------------
+   FILTER BUTTONS
+   ------------------------------------------ */
+.filter-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.filter-buttons button {
+  font-family: var(--font-header);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  background: rgba(13, 20, 33, 0.6);
+  border: 1px solid var(--border-cyber);
+  border-radius: 30px;
+  padding: 10px 22px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              color 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.filter-buttons button:hover,
+.filter-buttons button:focus {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  transform: translateY(-4px);
+  box-shadow: 0 0 15px var(--neon-cyan-glow);
+  outline: none;
+}
+
+.filter-buttons button:active {
+  background: rgba(0, 243, 255, 0.15);
+  color: #ffffff;
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 20px var(--neon-cyan-glow);
+}
+
+/* ------------------------------------------
+   TASK LIST & FLOATING TASK CARDS
+   ------------------------------------------ */
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-cyber);
+  border-radius: 16px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-floating);
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease,
+              background 0.3s ease;
+}
+
+.task-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-floating-hover);
+  border-color: var(--border-cyber-bright);
+  background: var(--bg-card-hover);
+}
+
+/* Neon Checkbox Styling */
+.task-item input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 6px;
+  background: var(--bg-input);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 8px rgba(0, 243, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.task-item input[type="checkbox"]:hover {
+  border-color: var(--neon-green);
+  box-shadow: 0 0 12px var(--neon-green-glow);
+}
+
+.task-item input[type="checkbox"]:checked {
+  background: var(--neon-green);
+  border-color: var(--neon-green);
+  box-shadow: 0 0 15px var(--neon-green-glow);
+}
+
+.task-item input[type="checkbox"]:checked::after {
+  content: "✓";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #030712;
+  font-weight: 900;
+  font-size: 14px;
+}
+
+/* Task Text & Timestamp */
+.task-title {
+  flex: 1;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--text-main);
+  transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+.task-item input[type="checkbox"]:checked ~ .task-title {
+  text-decoration: line-through;
+  color: var(--text-dim);
+}
+
+.task-time {
+  font-family: var(--font-mono);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.08);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  padding: 6px 14px;
+  border-radius: 8px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 8px var(--neon-cyan-glow);
+  flex-shrink: 0;
+}
+
+/* Delete Button */
+.delete-btn {
+  order: 10;
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--neon-pink);
+  background: rgba(255, 0, 85, 0.08);
+  border: 1px solid rgba(255, 0, 85, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+              box-shadow 0.3s ease,
+              background 0.3s ease,
+              color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.delete-btn:hover {
+  transform: translateY(-4px);
+  color: #ffffff;
+  background: var(--neon-pink);
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 15px var(--neon-pink-glow);
+}
+
+/* ------------------------------------------
+   RESPONSIVE DESIGN
+   ------------------------------------------ */
+@media (max-width: 900px) {
+  .app-container {
+    flex-direction: column;
+    padding: 24px 16px;
+    gap: 28px;
+  }
+
+  .sidebar {
+    flex: none;
+    width: 100%;
+    position: static;
+  }
+
+  .add-task-form {
+    flex-direction: column;
+  }
+
+  .add-task-form button {
+    width: 100%;
+  }
+}
