@@ -1,7 +1,8 @@
 {
-  "name": "backend",
+  "name": "taskforge",
+  "productName": "TaskForge",
   "version": "1.0.0",
-  "description": "Task Scheduler",
+  "description": "TaskForge Command Center",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
@@ -9,9 +10,10 @@
     "build": "electron-builder --win"
   },
   "build": {
-    "appId": "com.taskscheduler.app",
+    "appId": "com.taskforge.app",
+    "productName": "TaskForge",
     "directories": {
-      "output": "release"
+      "output": "dist-electron"
     },
     "win": {
       "target": "nsis"

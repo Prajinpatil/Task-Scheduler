@@ -1,5 +1,8 @@
 const { app, BrowserWindow } = require("electron");
 
+// Disable autoplay policy restrictions so audio plays automatically without requiring prior user gesture
+app.commandLine.appendSwitch("autoplay-policy", "no-user-gesture-required");
+
 // Boot the Express server
 require("./server.js");
 
@@ -12,7 +15,8 @@ function createWindow() {
     autoHideMenuBar: true,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      autoplayPolicy: "no-user-gesture-required"
     }
   });
 

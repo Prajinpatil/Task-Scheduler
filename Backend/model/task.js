@@ -15,13 +15,17 @@ const taskSchema = new mongoose.Schema({
   },
   daysToRepeat: { 
     type: [String], 
-    default: ["today"] 
+    default: ["everyday"] 
   },
   alarmSound: { 
     type: String, 
-    default: "default" 
+    default: "cyber_pulse" 
   },
   isSnoozeEnabled: { 
+    type: Boolean, 
+    default: true 
+  },
+  isFrozen: { 
     type: Boolean, 
     default: false 
   }

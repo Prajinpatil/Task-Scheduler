@@ -494,6 +494,560 @@ body {
 }
 
 /* ------------------------------------------
+   HERO MOTIVATIONAL QUOTE BANNER
+   ------------------------------------------ */
+.hero-quote-banner {
+  background: linear-gradient(135deg, rgba(0, 243, 255, 0.12) 0%, rgba(10, 14, 23, 0.9) 100%);
+  border: 1px solid rgba(0, 243, 255, 0.4);
+  border-left: 4px solid var(--neon-cyan);
+  border-radius: 16px;
+  padding: 28px 32px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 243, 255, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+.quote-badge {
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.15);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  padding: 4px 14px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  text-shadow: 0 0 8px var(--neon-cyan-glow);
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.quote-text {
+  font-family: var(--font-header);
+  font-size: 1.65rem;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+  letter-spacing: 1px;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3), 0 0 25px rgba(0, 243, 255, 0.2);
+}
+
+/* ------------------------------------------
+   RINGTONE SELECTOR & SOUND BADGE
+   ------------------------------------------ */
+.ringtone-select {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  background: var(--bg-input);
+  border: 1px solid var(--border-cyber);
+  border-radius: 10px;
+  padding: 14px 16px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.ringtone-select:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 15px var(--neon-cyan-glow);
+}
+
+.ringtone-select option {
+  background: #0a0e17;
+  color: var(--text-main);
+}
+
+.task-sound-badge {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--neon-green);
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+/* ------------------------------------------
+   COUNTDOWN WIDGET & EDIT BUTTON
+   ------------------------------------------ */
+.countdown-widget .widget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.edit-event-btn {
+  font-family: var(--font-header);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-event-btn:hover {
+  background: var(--neon-cyan);
+  color: #030712;
+  box-shadow: 0 0 10px var(--neon-cyan-glow);
+}
+
+.countdown-days {
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  color: var(--neon-green) !important;
+  text-shadow: 0 0 10px var(--neon-green-glow);
+  margin-bottom: 4px !important;
+}
+
+.target-date-label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------
+   ACTIVE ALARM MODAL OVERLAY
+   ------------------------------------------ */
+.alarm-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(3, 5, 9, 0.88);
+  backdrop-filter: blur(14px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease;
+}
+
+.alarm-modal-content {
+  background: linear-gradient(135deg, rgba(20, 10, 25, 0.95) 0%, rgba(10, 14, 23, 0.95) 100%);
+  border: 2px solid var(--neon-pink);
+  border-radius: 20px;
+  padding: 36px 40px;
+  max-width: 480px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 0 40px rgba(255, 0, 85, 0.5), inset 0 0 20px rgba(255, 0, 85, 0.2);
+  animation: pulseGlow 1.5s infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 25px rgba(255, 0, 85, 0.4); }
+  100% { box-shadow: 0 0 45px rgba(255, 0, 85, 0.8); }
+}
+
+.alarm-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.alarm-icon {
+  font-size: 2rem;
+}
+
+.alarm-header h2 {
+  font-family: var(--font-header);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--neon-pink);
+  text-shadow: 0 0 15px var(--neon-pink-glow);
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.alarm-task-title {
+  font-family: var(--font-header);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 12px 0 6px;
+}
+
+.alarm-task-time {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--neon-cyan);
+  margin-bottom: 24px;
+}
+
+.snooze-section {
+  background: rgba(13, 20, 33, 0.8);
+  border: 1px solid var(--border-cyber);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+}
+
+.snooze-section span {
+  display: block;
+  font-family: var(--font-header);
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.snooze-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.snooze-buttons button {
+  flex: 1;
+  font-family: var(--font-header);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid var(--neon-cyan);
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.snooze-buttons button:hover {
+  background: var(--neon-cyan);
+  color: #030712;
+  box-shadow: 0 0 15px var(--neon-cyan-glow);
+  transform: translateY(-2px);
+}
+
+.dismiss-btn {
+  width: 100%;
+  font-family: var(--font-header);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--neon-pink) 0%, #d00040 100%);
+  border: none;
+  border-radius: 10px;
+  padding: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 20px var(--neon-pink-glow);
+  transition: all 0.25s ease;
+}
+
+.dismiss-btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------
+   COUNTDOWN EVENT EDIT MODAL
+   ------------------------------------------ */
+.event-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(3, 5, 9, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.event-modal-content {
+  background: var(--bg-card);
+  border: 1px solid var(--border-cyber-bright);
+  border-radius: 18px;
+  padding: 32px;
+  width: 90%;
+  max-width: 440px;
+  box-shadow: var(--shadow-floating-hover);
+}
+
+.event-modal-content h2 {
+  font-family: var(--font-header);
+  font-size: 1.3rem;
+  color: var(--neon-green);
+  text-shadow: 0 0 10px var(--neon-green-glow);
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.form-group label {
+  font-family: var(--font-header);
+  font-size: 0.8rem;
+  color: var(--neon-cyan);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.form-group input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-main);
+  background: var(--bg-input);
+  border: 1px solid var(--border-cyber);
+  border-radius: 8px;
+  padding: 12px 14px;
+  outline: none;
+}
+
+.form-group input[type="date"] {
+  font-family: var(--font-mono);
+  color: var(--neon-cyan);
+}
+
+.form-group input:focus {
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 12px var(--neon-cyan-glow);
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.modal-actions .save-btn {
+  flex: 1;
+  font-family: var(--font-header);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #030712;
+  background: var(--neon-green);
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 15px var(--neon-green-glow);
+}
+
+.modal-actions .cancel-btn {
+  flex: 1;
+  font-family: var(--font-header);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+/* ------------------------------------------
+   ADD TASK CARD & SCHEDULE SELECTOR
+   ------------------------------------------ */
+.add-task-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-cyber);
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(16px);
+  box-shadow: var(--shadow-floating);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.add-task-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-floating-hover);
+  border-color: var(--border-cyber-bright);
+}
+
+.add-task-card .add-task-form {
+  padding: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.add-task-card .add-task-form:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.schedule-selector {
+  border-top: 1px dashed rgba(0, 243, 255, 0.2);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  text-align: left;
+}
+
+.selector-label {
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--neon-cyan);
+  text-transform: uppercase;
+}
+
+.repeat-options {
+  display: flex;
+  gap: 8px;
+}
+
+.repeat-btn {
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: rgba(10, 14, 23, 0.8);
+  border: 1px solid var(--border-cyber);
+  border-radius: 20px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.repeat-btn.active {
+  color: #030712;
+  background: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  box-shadow: 0 0 10px var(--neon-cyan-glow);
+}
+
+.day-pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.day-pill {
+  font-family: var(--font-header);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.day-pill.selected {
+  color: #030712;
+  background: var(--neon-green);
+  border-color: var(--neon-green);
+  box-shadow: 0 0 8px var(--neon-green-glow);
+}
+
+/* ------------------------------------------
+   FREEZE BUTTON & FROZEN TASK CARD
+   ------------------------------------------ */
+.task-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  text-align: left;
+}
+
+.task-badges {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.schedule-badge {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--neon-cyan);
+  background: rgba(0, 243, 255, 0.08);
+  border: 1px solid rgba(0, 243, 255, 0.2);
+  padding: 3px 8px;
+  border-radius: 6px;
+}
+
+.frozen-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: #a0c4ff;
+  background: rgba(160, 196, 255, 0.15);
+  border: 1px solid rgba(160, 196, 255, 0.4);
+  padding: 3px 8px;
+  border-radius: 6px;
+  text-shadow: 0 0 6px rgba(160, 196, 255, 0.5);
+}
+
+.freeze-btn {
+  order: 9;
+  font-family: var(--font-header);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #a0c4ff;
+  background: rgba(160, 196, 255, 0.08);
+  border: 1px solid rgba(160, 196, 255, 0.3);
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.freeze-btn:hover {
+  transform: translateY(-2px);
+  color: #ffffff;
+  background: rgba(160, 196, 255, 0.25);
+  border-color: #a0c4ff;
+  box-shadow: 0 0 12px rgba(160, 196, 255, 0.4);
+}
+
+.freeze-btn.is-frozen {
+  color: var(--neon-green);
+  background: rgba(0, 255, 136, 0.1);
+  border-color: rgba(0, 255, 136, 0.3);
+}
+
+.task-item.frozen-card {
+  opacity: 0.7;
+  border-color: rgba(160, 196, 255, 0.3);
+  background: rgba(10, 14, 25, 0.6);
+}
+
+.active-filter {
+  color: #030712 !important;
+  background: var(--neon-cyan) !important;
+  border-color: var(--neon-cyan) !important;
+  box-shadow: 0 0 15px var(--neon-cyan-glow) !important;
+}
+
+/* ------------------------------------------
    RESPONSIVE DESIGN
    ------------------------------------------ */
 @media (max-width: 900px) {

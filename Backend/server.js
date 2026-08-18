@@ -23,9 +23,10 @@ mongoose.connect(process.env.MONGO_URI)
 // 🚀 NEW: IMPORT YOUR BLUEPRINT
 // ==========================================
 const Task = require("./model/task"); 
+const Event = require("./model/event");
 
 // ==========================================
-// 🚀 NEW: THE API ROUTES (CRUD)
+// 🚀 THE API ROUTES (CRUD)
 // ==========================================
 
 // 1. READ: Get all tasks
@@ -49,7 +50,7 @@ app.post("/api/tasks", async (req, res) => {
   }
 });
 
-// 3. UPDATE: Toggle complete
+// 3. UPDATE: Toggle complete / Snooze / Edit
 app.put("/api/tasks/:id", async (req, res) => {
   try {
     const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -69,10 +70,53 @@ app.delete("/api/tasks/:id", async (req, res) => {
   }
 });
 
+// 4.5 RESET: Uncheck tasks for 3 AM daily reset
+app.put("/api/tasks/reset-daily", async (req, res) => {
+  try {
+    await Task.updateMany({}, { isCompleted: false });
+    const tasks = await Task.find();
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: "Error resetting tasks" });
+  }
+});
+
+// 5. COUNTDOWN EVENT ROUTES
+app.get("/api/event", async (req, res) => {
+  try {
+    let event = await Event.findOne();
+    if (!event) {
+      const defaultDate = new Date();
+      defaultDate.setDate(defaultDate.getDate() + 14);
+      const dateStr = defaultDate.toISOString().split("T")[0];
+      event = await Event.create({ title: "Project Launch", targetDate: dateStr });
+    }
+    res.json(event);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching event" });
+  }
+});
+
+app.put("/api/event", async (req, res) => {
+  try {
+    let event = await Event.findOne();
+    if (!event) {
+      event = new Event(req.body);
+    } else {
+      event.title = req.body.title;
+      event.targetDate = req.body.targetDate;
+    }
+    const savedEvent = await event.save();
+    res.json(savedEvent);
+  } catch (error) {
+    res.status(400).json({ message: "Error saving event", error });
+  }
+});
+
 // ==========================================
 
-// Catch-all route to serve React app for any other routes
-app.get("*", (req, res) => {
+// Catch-all route to serve React app for any other routes (Express 5 compatible)
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
